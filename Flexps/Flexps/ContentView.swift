@@ -12,11 +12,13 @@ struct ContentView: View {
     @State private var showImporter = false
     @State private var showSettings = false
 
-    // UTType no expone .flac ni .aac como miembros estáticos: se construyen
+    // UTType no expone FLAC ni AAC como miembros estáticos: se construyen
     // por extensión de archivo. Cubre los 6 tipos de la web (mp3, m4a, wav,
-    // aac, flac) más el tipo genérico de audio.
+    // aac, flac, mp4) más el tipo genérico de audio. El mp4 es necesario:
+    // la web lo acepta y la música bajada como MP4 es muy común; sin él
+    // Archivos muestra el archivo en gris y Abrir no hace nada.
     private static let audioImportTypes: [UTType] =
-        ["mp3", "m4a", "wav", "aac", "flac"].compactMap { UTType(filenameExtension: $0) } + [.audio]
+        ["mp3", "m4a", "wav", "aac", "flac", "mp4"].compactMap { UTType(filenameExtension: $0) } + [.audio]
 
     private var theme: AppTheme { AppTheme(rawValue: themeRaw) ?? .system }
 
@@ -64,14 +66,26 @@ struct ContentView: View {
             switch result {
             case .success(let urls):
                 Task { await store.importFiles(urls) }
-            case .failure:
-                break
+            case .failure(let error):
+                // Antes se tragaba el error en silencio: el usuario elegía
+                // y no pasaba nada. Ahora queda un mensaje visible.
+                store.importResultMessage = "No se pudo elegir el archivo: \(error.localizedDescription)"
             }
         }
         .alert("Importando", isPresented: $store.isImporting) {
             Button("OK", role: .cancel) { }
         } message: {
             Text(store.importStatus)
+        }
+        // Resultado de la importación: alert propio, separado del de
+        // "Importando" (que se cierra al terminar y no se llegaba a leer).
+        .alert("Importar música", isPresented: Binding(
+            get: { store.importResultMessage != nil },
+            set: { if !$0 { store.importResultMessage = nil } }
+        )) {
+            Button("OK", role: .cancel) { store.importResultMessage = nil }
+        } message: {
+            Text(store.importResultMessage ?? "")
         }
         .onAppear {
             player.store = store
