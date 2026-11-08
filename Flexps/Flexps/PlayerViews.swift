@@ -43,7 +43,11 @@ struct MiniPlayerView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 14))
                 .shadow(radius: 4)
                 .padding(.horizontal, 12)
-                .padding(.bottom, 4)
+                // iOS 26: la barra de pestañas ahora es una píldora flotante
+                // que se superpone al área segura inferior, y el mini
+                // reproductor (en safeAreaInset) quedaba encima del menú.
+                // Este margen lo levanta por encima de la barra.
+                .padding(.bottom, 48)
             }
             .buttonStyle(.plain)
         }
