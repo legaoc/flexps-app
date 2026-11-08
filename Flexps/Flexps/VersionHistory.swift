@@ -12,10 +12,18 @@ struct VersionEntry: Identifiable {
 }
 
 enum VersionHistory {
-    static let current = "1.0"
+    static let current = "1.0.1"
     static let webVersion = "1.6.2"
 
     static let entries: [VersionEntry] = [
+        VersionEntry(
+            version: "1.0.1",
+            date: "8 nov 2026",
+            notes: [
+                "Se corrigió la importación: los archivos MP4 ahora aparecen en el picker y se pueden importar, como en la web.",
+                "El resultado de la importación siempre se muestra: al terminar sale un aviso con cuántas canciones se importaron o por qué no se pudo importar."
+            ]
+        ),
         VersionEntry(
             version: "1.0",
             date: "8 nov 2026",
