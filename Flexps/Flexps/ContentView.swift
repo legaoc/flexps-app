@@ -61,7 +61,11 @@ struct ContentView: View {
         .fileImporter(
             isPresented: $showImporter,
             allowedContentTypes: Self.audioImportTypes,
-            allowsMultipleSelection: true
+            // Un solo toque importa directo: con selección múltiple, tocar
+            // la canción solo la marcaba y había que pulsar "Abrir" arriba,
+            // y Jesus se quedaba esperando (su MP3 "One Way Stolen Dance"
+            // se quedaba seleccionado sin importar). Así, tocarla importa.
+            allowsMultipleSelection: false
         ) { result in
             switch result {
             case .success(let urls):
