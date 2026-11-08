@@ -47,7 +47,7 @@ struct MiniPlayerView: View {
                 // que se superpone al área segura inferior, y el mini
                 // reproductor (en safeAreaInset) quedaba encima del menú.
                 // Este margen lo levanta por encima de la barra.
-                .padding(.bottom, 48)
+                .padding(.bottom, 64)
             }
             .buttonStyle(.plain)
         }
