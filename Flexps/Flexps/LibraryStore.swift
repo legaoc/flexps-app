@@ -18,6 +18,10 @@ final class LibraryStore: ObservableObject {
     @Published var isImporting = false
     @Published var importStatus: String = ""
     @Published var importProgress: Double = 0
+    /// Resultado de la última importación, para mostrarlo en un alert propio
+    /// en ContentView. Antes el mensaje final se perdía al cerrarse el
+    /// alert "Importando" y los fallos eran silenciosos.
+    @Published var importResultMessage: String?
 
     /// Últimos 40 tracks de YouTube en memoria (como la web, no persistentes).
     @Published var recentYouTube: [YouTubeTrack] = []
@@ -83,29 +87,68 @@ final class LibraryStore: ObservableObject {
 
     // MARK: - Importar
 
+    /// Motivo de fallo de una importación, para que el mensaje final diga
+    /// por qué no entró la canción en vez de fallar en silencio.
+    private enum ImportOutcome {
+        case imported
+        case unsupportedExtension(String)
+        case copyFailed(String)
+    }
+
     /// Importa archivos elegidos con fileImporter. Copia cada archivo a
     /// Documents/Music con startAccessingSecurityScopedResource; nunca se
     /// guarda la URL original (igual que la web guarda el Blob en IndexedDB).
     func importFiles(_ urls: [URL]) async {
         guard !urls.isEmpty else { return }
         isImporting = true
+        importResultMessage = nil
         importProgress = 0
         var imported = 0
+        var unsupported = 0
+        var copyFailures = 0
         for (index, url) in urls.enumerated() {
             importStatus = "Importando \(index + 1) de \(urls.count)…"
             let didAccess = url.startAccessingSecurityScopedResource()
             defer { if didAccess { url.stopAccessingSecurityScopedResource() } }
-            if await importOne(url) { imported += 1 }
+            switch await importOne(url) {
+            case .imported: imported += 1
+            case .unsupportedExtension: unsupported += 1
+            case .copyFailed: copyFailures += 1
+            }
             importProgress = Double(index + 1) / Double(urls.count)
         }
         save()
-        importStatus = imported > 0 ? "Se importaron \(imported) canciones." : "No se pudo importar ninguna canción."
+        let message: String
+        if imported > 0, unsupported == 0, copyFailures == 0 {
+            message = imported == 1
+                ? "Se importó 1 canción."
+                : "Se importaron \(imported) canciones."
+        } else if imported == 0, unsupported > 0, copyFailures == 0 {
+            message = "No se pudo importar: el formato no es compatible. Usa MP3, M4A, WAV, AAC, FLAC o MP4."
+        } else if imported == 0, copyFailures > 0 {
+            message = "No se pudo importar: no se pudo copiar el archivo. Inténtalo de nuevo."
+        } else if imported == 0 {
+            message = "No se pudo importar ninguna canción."
+        } else {
+            var parts: [String] = [
+                imported == 1 ? "Se importó 1 canción." : "Se importaron \(imported) canciones."
+            ]
+            if unsupported > 0 { parts.append("\(unsupported) con formato no compatible.") }
+            if copyFailures > 0 { parts.append("\(copyFailures) no se pudieron copiar.") }
+            message = parts.joined(separator: " ")
+        }
+        importStatus = message
         isImporting = false
+        // Pequeña pausa para que se cierre el alert "Importando" antes de
+        // presentar el del resultado; si se presentan en la misma
+        // transacción, iOS puede tragarse el segundo.
+        try? await Task.sleep(nanoseconds: 300_000_000)
+        importResultMessage = message
     }
 
-    private func importOne(_ url: URL) async -> Bool {
+    private func importOne(_ url: URL) async -> ImportOutcome {
         let ext = url.pathExtension.lowercased()
-        guard Self.supportedExtensions.contains(ext) else { return false }
+        guard Self.supportedExtensions.contains(ext) else { return .unsupportedExtension(ext) }
         let fileName = url.lastPathComponent
         let fileSize = (try? fileManager.attributesOfItem(atPath: url.path)[.size] as? Int64) ?? 0
         let metadata = await MetadataService.extract(from: url)
@@ -127,7 +170,7 @@ final class LibraryStore: ObservableObject {
             }
             try fileManager.copyItem(at: url, to: dest)
         } catch {
-            return false
+            return .copyFailed(error.localizedDescription)
         }
         var finalSong = song
         // Portada embebida: se guarda como archivo en Covers/ si existe.
@@ -143,7 +186,7 @@ final class LibraryStore: ObservableObject {
         songs.append(finalSong)
         // Enriquecer con Deezer en segundo plano, como updateSongInfo() en la web.
         Task { await enrichWithDeezer(songId: finalSong.id) }
-        return true
+        return .imported
     }
 
     private func mimeType(forExtension ext: String) -> String {
