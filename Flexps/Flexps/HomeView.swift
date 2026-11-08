@@ -216,7 +216,7 @@ struct HomeView: View {
             HStack {
                 Image(systemName: icon)
                     .frame(width: 28)
-                    .foregroundStyle(.accentColor)
+                    .foregroundStyle(Color.accentColor)
                 Text(title)
                     .foregroundStyle(.primary)
                 Spacer()

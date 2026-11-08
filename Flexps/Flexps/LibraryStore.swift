@@ -376,10 +376,11 @@ final class LibraryStore: ObservableObject {
         for dir in [musicDir, coversDir] {
             guard let enumerator = fileManager.enumerator(at: dir, includingPropertiesForKeys: [.fileSizeKey]) else { continue }
             for case let url as URL in enumerator {
-                total += (try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize) ?? 0
+                // fileSize es Int? y total es Int64: convertir explícitamente.
+                total += Int64((try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize) ?? 0)
             }
         }
-        total += (try? libraryFile.resourceValues(forKeys: [.fileSizeKey]).fileSize) ?? 0
+        total += Int64((try? libraryFile.resourceValues(forKeys: [.fileSizeKey]).fileSize) ?? 0)
         return total
     }
 

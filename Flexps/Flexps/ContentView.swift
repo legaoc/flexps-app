@@ -12,6 +12,12 @@ struct ContentView: View {
     @State private var showImporter = false
     @State private var showSettings = false
 
+    // UTType no expone .flac ni .aac como miembros estáticos: se construyen
+    // por extensión de archivo. Cubre los 6 tipos de la web (mp3, m4a, wav,
+    // aac, flac) más el tipo genérico de audio.
+    private static let audioImportTypes: [UTType] =
+        ["mp3", "m4a", "wav", "aac", "flac"].compactMap { UTType(filenameExtension: $0) } + [.audio]
+
     private var theme: AppTheme { AppTheme(rawValue: themeRaw) ?? .system }
 
     var body: some View {
@@ -52,7 +58,7 @@ struct ContentView: View {
         }
         .fileImporter(
             isPresented: $showImporter,
-            allowedContentTypes: [.mp3, .mpeg4Audio, .wav, .flac, .aac, .audio],
+            allowedContentTypes: Self.audioImportTypes,
             allowsMultipleSelection: true
         ) { result in
             switch result {
@@ -164,7 +170,7 @@ struct SongRowView: View {
             }
             if player.currentSong?.id == song.id {
                 Image(systemName: player.isPlaying ? "waveform" : "pause.fill")
-                    .foregroundStyle(.accentColor)
+                    .foregroundStyle(Color.accentColor)
                     .font(.caption)
             }
         }
@@ -230,7 +236,12 @@ struct AddToPlaylistSheet: View {
                         }
                     }
                 }
-                ForEach(store.playlists) { playlist in
+                // id: \.id explícito: Playlist es Identifiable, pero el cierre
+                // contiene un .foregroundStyle que fallaba y el compilador
+                // resolvía el ForEach hacia la sobrecarga de Binding y
+                // reportaba errores en cascada. Con id explícito la
+                // sobrecarga queda fijada a la de colección no vinculante.
+                ForEach(store.playlists, id: \.id) { playlist in
                     Button {
                         store.addSong(song, to: playlist)
                         dismiss()
@@ -240,7 +251,7 @@ struct AddToPlaylistSheet: View {
                             Spacer()
                             if playlist.songIds.contains(song.id) {
                                 Image(systemName: "checkmark")
-                                    .foregroundStyle(.accentColor)
+                                    .foregroundStyle(Color.accentColor)
                             }
                         }
                     }

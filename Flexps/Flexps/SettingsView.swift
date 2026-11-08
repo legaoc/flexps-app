@@ -15,17 +15,16 @@ struct SettingsView: View {
     @State private var isUpdatingLyrics = false
     @State private var showVersionHistory = false
 
-    private var theme: AppTheme {
-        get { AppTheme(rawValue: themeRaw) ?? .system }
-        set { themeRaw = newValue.rawValue }
-    }
-
     var body: some View {
         List {
             Section("Apariencia") {
+                // theme es una computed var sobre themeRaw (@AppStorage):
+                // asignarla dentro del set de un Binding escapaba como
+                // 'self' inmutable. El Binding opera sobre themeRaw
+                // directamente, con el mismo comportamiento.
                 Picker("Tema", selection: Binding(
-                    get: { theme },
-                    set: { theme = $0 }
+                    get: { AppTheme(rawValue: themeRaw) ?? .system },
+                    set: { themeRaw = $0.rawValue }
                 )) {
                     ForEach(AppTheme.allCases) { theme in
                         Text(theme.label).tag(theme)

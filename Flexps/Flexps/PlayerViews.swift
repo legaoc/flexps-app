@@ -219,7 +219,7 @@ struct FullPlayerView: View {
             } label: {
                 Image(systemName: "shuffle")
                     .font(.title2)
-                    .foregroundStyle(player.isShuffle ? .accentColor : .primary)
+                    .foregroundStyle(player.isShuffle ? Color.accentColor : Color.primary)
             }
             Button {
                 player.previous()
@@ -244,7 +244,7 @@ struct FullPlayerView: View {
             } label: {
                 Image(systemName: player.repeatMode.icon)
                     .font(.title2)
-                    .foregroundStyle(player.repeatMode == .off ? .primary : .accentColor)
+                    .foregroundStyle(player.repeatMode == .off ? Color.primary : Color.accentColor)
             }
         }
         .foregroundStyle(.primary)
