@@ -1,0 +1,400 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000000000000000000001000 /* FlexpsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001001 /* FlexpsApp.swift */; };
+		000000000000000000001002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001003 /* ContentView.swift */; };
+		000000000000000000001004 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001005 /* Models.swift */; };
+		000000000000000000001006 /* LibraryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001007 /* LibraryStore.swift */; };
+		000000000000000000001008 /* PlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001009 /* PlayerManager.swift */; };
+		00000000000000000000100A /* MetadataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000100B /* MetadataService.swift */; };
+		00000000000000000000100C /* LyricsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000100D /* LyricsService.swift */; };
+		00000000000000000000100E /* YouTubeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000100F /* YouTubeService.swift */; };
+		000000000000000000001010 /* YouTubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001011 /* YouTubePlayerView.swift */; };
+		000000000000000000001012 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001013 /* HomeView.swift */; };
+		000000000000000000001014 /* LibraryViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001015 /* LibraryViews.swift */; };
+		000000000000000000001016 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001017 /* SearchView.swift */; };
+		000000000000000000001018 /* PlaylistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001019 /* PlaylistsView.swift */; };
+		00000000000000000000101A /* ForYouView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000101B /* ForYouView.swift */; };
+		00000000000000000000101C /* PlayerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000101D /* PlayerViews.swift */; };
+		00000000000000000000101E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000101F /* SettingsView.swift */; };
+		000000000000000000001020 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001021 /* Theme.swift */; };
+		000000000000000000001022 /* VersionHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001023 /* VersionHistory.swift */; };
+		000000000000000000001024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001025 /* Assets.xcassets */; };
+		000000000000000000001027 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001028 /* CHANGELOG.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		000000000000000000001001 /* FlexpsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexpsApp.swift; sourceTree = "<group>"; };
+		000000000000000000001003 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		000000000000000000001005 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		000000000000000000001007 /* LibraryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryStore.swift; sourceTree = "<group>"; };
+		000000000000000000001009 /* PlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerManager.swift; sourceTree = "<group>"; };
+		00000000000000000000100B /* MetadataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataService.swift; sourceTree = "<group>"; };
+		00000000000000000000100D /* LyricsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsService.swift; sourceTree = "<group>"; };
+		00000000000000000000100F /* YouTubeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeService.swift; sourceTree = "<group>"; };
+		000000000000000000001011 /* YouTubePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerView.swift; sourceTree = "<group>"; };
+		000000000000000000001013 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		000000000000000000001015 /* LibraryViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViews.swift; sourceTree = "<group>"; };
+		000000000000000000001017 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		000000000000000000001019 /* PlaylistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistsView.swift; sourceTree = "<group>"; };
+		00000000000000000000101B /* ForYouView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForYouView.swift; sourceTree = "<group>"; };
+		00000000000000000000101D /* PlayerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViews.swift; sourceTree = "<group>"; };
+		00000000000000000000101F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		000000000000000000001021 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		000000000000000000001023 /* VersionHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionHistory.swift; sourceTree = "<group>"; };
+		000000000000000000001029 /* Flexps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flexps.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000000000000000001025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		000000000000000000001026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		000000000000000000001028 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = ../CHANGELOG.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		000000000000000000001030 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00000000000000000000102A = {
+			isa = PBXGroup;
+			children = (
+				00000000000000000000102B /* Flexps */,
+				00000000000000000000102C /* Products */,
+				000000000000000000001028 /* CHANGELOG.md */,
+			);
+			sourceTree = "<group>";
+		};
+		00000000000000000000102B /* Flexps */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000001001 /* FlexpsApp.swift */,
+				000000000000000000001003 /* ContentView.swift */,
+				000000000000000000001005 /* Models.swift */,
+				000000000000000000001007 /* LibraryStore.swift */,
+				000000000000000000001009 /* PlayerManager.swift */,
+				00000000000000000000100B /* MetadataService.swift */,
+				00000000000000000000100D /* LyricsService.swift */,
+				00000000000000000000100F /* YouTubeService.swift */,
+				000000000000000000001011 /* YouTubePlayerView.swift */,
+				000000000000000000001013 /* HomeView.swift */,
+				000000000000000000001015 /* LibraryViews.swift */,
+				000000000000000000001017 /* SearchView.swift */,
+				000000000000000000001019 /* PlaylistsView.swift */,
+				00000000000000000000101B /* ForYouView.swift */,
+				00000000000000000000101D /* PlayerViews.swift */,
+				00000000000000000000101F /* SettingsView.swift */,
+				000000000000000000001021 /* Theme.swift */,
+				000000000000000000001023 /* VersionHistory.swift */,
+				000000000000000000001025 /* Assets.xcassets */,
+				000000000000000000001026 /* Info.plist */,
+			);
+			path = Flexps;
+			sourceTree = "<group>";
+		};
+		00000000000000000000102C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				000000000000000000001029 /* Flexps.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00000000000000000000102E /* Flexps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 000000000000000000001033 /* Build configuration list for PBXNativeTarget "Flexps" */;
+			buildPhases = (
+				00000000000000000000102F /* Sources */,
+				000000000000000000001030 /* Frameworks */,
+				000000000000000000001031 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Flexps;
+			productName = Flexps;
+			productReference = 000000000000000000001029 /* Flexps.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		00000000000000000000102D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					00000000000000000000102E = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 000000000000000000001032 /* Build configuration list for PBXProject "Flexps" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 00000000000000000000102A;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				00000000000000000000102E /* Flexps */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		000000000000000000001031 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000000000000000000001024 /* Assets.xcassets in Resources */,
+				000000000000000000001027 /* CHANGELOG.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00000000000000000000102F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				000000000000000000001000 /* FlexpsApp.swift in Sources */,
+				000000000000000000001002 /* ContentView.swift in Sources */,
+				000000000000000000001004 /* Models.swift in Sources */,
+				000000000000000000001006 /* LibraryStore.swift in Sources */,
+				000000000000000000001008 /* PlayerManager.swift in Sources */,
+				00000000000000000000100A /* MetadataService.swift in Sources */,
+				00000000000000000000100C /* LyricsService.swift in Sources */,
+				00000000000000000000100E /* YouTubeService.swift in Sources */,
+				000000000000000000001010 /* YouTubePlayerView.swift in Sources */,
+				000000000000000000001012 /* HomeView.swift in Sources */,
+				000000000000000000001014 /* LibraryViews.swift in Sources */,
+				000000000000000000001016 /* SearchView.swift in Sources */,
+				000000000000000000001018 /* PlaylistsView.swift in Sources */,
+				00000000000000000000101A /* ForYouView.swift in Sources */,
+				00000000000000000000101C /* PlayerViews.swift in Sources */,
+				00000000000000000000101E /* SettingsView.swift in Sources */,
+				000000000000000000001020 /* Theme.swift in Sources */,
+				000000000000000000001022 /* VersionHistory.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		000000000000000000001034 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFS = "";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		000000000000000000001035 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFS = "";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		000000000000000000001036 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Flexps/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = iPlayerPod;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.legaoc.flexps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMBED_LIBRARIES_WITH_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		000000000000000000001037 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Flexps/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = iPlayerPod;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.legaoc.flexps;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMBED_LIBRARIES_WITH_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		000000000000000000001032 /* Build configuration list for PBXProject "Flexps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000000001034 /* Debug */,
+				000000000000000000001035 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		000000000000000000001033 /* Build configuration list for PBXNativeTarget "Flexps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				000000000000000000001036 /* Debug */,
+				000000000000000000001037 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 00000000000000000000102D /* Project object */;
+}
