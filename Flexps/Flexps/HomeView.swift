@@ -27,8 +27,13 @@ struct HomeView: View {
                 }
                 .padding()
             }
-            .navigationTitle("iPlayerPod")
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image("Logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 24)
+                }
                 ToolbarItem(placement: .primaryAction) {
                     Button { showSettings = true } label: {
                         Image(systemName: "gearshape")
