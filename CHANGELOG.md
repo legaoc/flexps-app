@@ -1,4 +1,13 @@
-# iPlayerPod 1.0 — Historial de versiones
+# iPlayerPod 1.0.1 — Historial de versiones
+
+## 1.0.1 — 8 nov 2026
+
+- Se corrigió la importación: los archivos MP4 ahora aparecen en el picker
+  y se pueden importar, como en la web (antes salían en gris y el botón
+  Abrir no hacía nada).
+- El resultado de la importación siempre se muestra en un aviso al
+  terminar: cuántas canciones se importaron, o por qué no se pudo importar
+  (formato no compatible o error al copiar el archivo).
 
 ## 1.0 — 8 nov 2026
 
