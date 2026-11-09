@@ -25,6 +25,11 @@ final class PlayerManager: ObservableObject {
     @Published var sleepTimer: SleepTimerOption = .off
     @Published var sleepRemaining: TimeInterval?
 
+    /// Visualizador de audio: energía real por MTAudioProcessingTap
+    /// (solo lectura) o respiración por seno sin tap. Lo usa el fondo
+    /// que respira del reproductor completo.
+    let visualizer = AudioVisualizer()
+
     weak var store: LibraryStore?
 
     private var player: AVPlayer?
@@ -125,7 +130,10 @@ final class PlayerManager: ObservableObject {
             store?.songs[index].playCount += 1
             store?.save()
         }
-        guard let store, let url = songURL(song, in: store) else { return }
+        guard let store, let url = songURL(song, in: store) else {
+            visualizer.detach()
+            return
+        }
         startPlayer(with: url, song: song)
     }
 
@@ -142,6 +150,7 @@ final class PlayerManager: ObservableObject {
         }
         if let endObserver { NotificationCenter.default.removeObserver(endObserver) }
         let item = AVPlayerItem(url: url)
+        visualizer.attach(to: item)
         player = AVPlayer(playerItem: item)
         player?.volume = 1.0
         let interval = CMTime(seconds: 0.25, preferredTimescale: 600)
@@ -163,6 +172,7 @@ final class PlayerManager: ObservableObject {
         }
         player?.play()
         isPlaying = true
+        visualizer.isPlaying = true
         if sleepTimer == .endOfSong {
             // El temporizador "al terminar la canción" se resuelve en handleTrackEnded.
         }
@@ -177,6 +187,7 @@ final class PlayerManager: ObservableObject {
         player?.pause()
         fadePlayer?.pause()
         isPlaying = false
+        visualizer.isPlaying = false
         updateNowPlaying()
     }
 
@@ -184,6 +195,7 @@ final class PlayerManager: ObservableObject {
         if player == nil, let song = currentSong { play(song: song) ; return }
         player?.play()
         isPlaying = true
+        visualizer.isPlaying = true
         updateNowPlaying()
     }
 
@@ -313,6 +325,10 @@ final class PlayerManager: ObservableObject {
                     self.fadePlayer = nil
                     self.player?.volume = 1.0
                     self.attachObservers()
+                    // El tap vivía en el ítem anterior: se engancha al nuevo.
+                    if let item = self.player?.currentItem {
+                        self.visualizer.attach(to: item)
+                    }
                     self.updateNowPlaying()
                 }
             }
