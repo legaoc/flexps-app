@@ -1,4 +1,46 @@
-# iPlayerPod 1.0.1 — Historial de versiones
+# iPlayerPod — Historial de versiones
+
+La app Swift sigue su propio número de versión. La web está en v1.6.2.
+
+## 1.0.8 — 9 nov 2026
+
+- Visualizador de audio, como en la web: la portada queda estática y el
+  fondo borroso detrás respira con la energía de la música (escala,
+  rotación, saturación y brillo).
+- La energía real se lee con un tap de solo lectura sobre el reproductor,
+  sin tocar el crossfade ni la reproducción en segundo plano; sin espectro
+  (YouTube) respira por seno, como en la web.
+
+## 1.0.7 — 8 nov 2026
+
+- En modo oscuro los iconos ya se ven blancos: el color de acento era
+  negro fijo y la pestaña seleccionada desaparecía sobre el fondo oscuro.
+
+## 1.0.6 — 8 nov 2026
+
+- El mini reproductor quedó un poco más arriba, con más aire sobre el menú
+  de abajo.
+
+## 1.0.5 — 8 nov 2026
+
+- El mini reproductor ya no tapa el menú de abajo (la barra flotante de
+  iOS 26).
+
+## 1.0.4 — 8 nov 2026
+
+- Importar música con Compartir o Abrir con desde Archivos y otras apps,
+  directo a la biblioteca.
+
+## 1.0.3 — 8 nov 2026
+
+- Icono de la app con el PNG real de iPlay (oscuro con el logo tal cual,
+  claro en negativo) y el logo también dentro de la app, en Inicio.
+- Importar desde el selector ahora es con un solo toque.
+
+## 1.0.2 — 8 nov 2026
+
+- La app ahora se llama iPlayerPod en todas partes (antes aparecía como
+  Flexps).
 
 ## 1.0.1 — 8 nov 2026
 
@@ -33,6 +75,3 @@ iPlayerPod v1.6.2 (`legaoc/flexps`).
   API v3 guardada en Ajustes.
 - Tema claro/oscuro, almacenamiento, borrar biblioteca. Sin cuenta, sin
   Firebase, sin servidores propios.
-
-Pendiente: visualizador de audio por analyser (la web lo tenía con Web
-Audio API; en Swift sería AVAudioEngine con un tap, no se incluyó en 1.0).
