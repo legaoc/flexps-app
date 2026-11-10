@@ -25,6 +25,7 @@
 		00000000000000000000101E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00000000000000000000101F /* SettingsView.swift */; };
 		000000000000000000001020 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001021 /* Theme.swift */; };
 		000000000000000000001022 /* VersionHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001023 /* VersionHistory.swift */; };
+		000000000000000000001038 /* AudioVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001039 /* AudioVisualizer.swift */; };
 		000000000000000000001024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001025 /* Assets.xcassets */; };
 		000000000000000000001027 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 000000000000000000001028 /* CHANGELOG.md */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		00000000000000000000101F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		000000000000000000001021 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		000000000000000000001023 /* VersionHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionHistory.swift; sourceTree = "<group>"; };
+		000000000000000000001039 /* AudioVisualizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVisualizer.swift; sourceTree = "<group>"; };
 		000000000000000000001029 /* Flexps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flexps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		000000000000000000001025 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		000000000000000000001026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				00000000000000000000101F /* SettingsView.swift */,
 				000000000000000000001021 /* Theme.swift */,
 				000000000000000000001023 /* VersionHistory.swift */,
+				000000000000000000001039 /* AudioVisualizer.swift */,
 				000000000000000000001025 /* Assets.xcassets */,
 				000000000000000000001026 /* Info.plist */,
 			);
@@ -195,6 +198,7 @@
 				00000000000000000000101E /* SettingsView.swift in Sources */,
 				000000000000000000001020 /* Theme.swift in Sources */,
 				000000000000000000001022 /* VersionHistory.swift in Sources */,
+				000000000000000000001038 /* AudioVisualizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
