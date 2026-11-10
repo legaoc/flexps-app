@@ -31,9 +31,10 @@ final class AudioVisualizer: ObservableObject {
     nonisolated let rawEnergy = OSAllocatedUnfairLock(initialState: 0.0)
 
     private var hasTap = false
-    /// Nonisolated para poder invalidarlo en deinit sin tocar estado
-    /// aislado al MainActor desde un contexto no aislado.
-    nonisolated private var timer: Timer?
+    /// nonisolated(unsafe) para poder invalidarlo en deinit sin tocar
+    /// estado aislado al MainActor desde un contexto no aislado. Solo se
+    /// toca en el hilo principal (init y deinit).
+    nonisolated(unsafe) private var timer: Timer?
     private var startTime = Date()
 
     init() {
@@ -64,11 +65,12 @@ final class AudioVisualizer: ObservableObject {
     /// false y el visualizador respira por seno.
     func attach(to item: AVPlayerItem) {
         hasTap = false
-        guard let track = item.asset.tracks(withMediaType: .audio).first else { return }
+        guard let track = item.asset.tracks.first(where: { $0.mediaType == .audio }) else { return }
         var callbacks = MTAudioProcessingTapCallbacks(
             version: kMTAudioProcessingTapCallbacksVersion_0,
             clientInfo: Unmanaged.passUnretained(self).toOpaque(),
             init: { _, clientInfo, tapStorageOut in
+                guard let clientInfo else { return }
                 let viz = Unmanaged<AudioVisualizer>.fromOpaque(clientInfo).takeUnretainedValue()
                 let state = UnsafeMutablePointer<TapState>.allocate(capacity: 1)
                 state.initialize(to: TapState(
@@ -130,19 +132,20 @@ final class AudioVisualizer: ObservableObject {
                 viz.rawEnergy.withLock { $0 = rms }
             }
         )
-        var tap: Unmanaged<MTAudioProcessingTap>?
+        // MTAudioProcessingTap es un CFType importado como clase: Create
+        // devuelve el tap directo (MTAudioProcessingTap?), no un Unmanaged.
+        var tap: MTAudioProcessingTap?
         let status = MTAudioProcessingTapCreate(
             kCFAllocatorDefault, &callbacks,
             kMTAudioProcessingTapCreationFlag_PreEffects, &tap
         )
         guard status == noErr, let tap else { return }
         let params = AVMutableAudioMixInputParameters(track: track)
-        params.audioTapProcessor = tap.takeUnretainedValue()
+        params.audioTapProcessor = tap
         let mix = AVMutableAudioMix()
         mix.inputParameters = [params]
         item.audioMix = mix
-        // El audioMix ya retiene el tap; se libera la referencia de Create.
-        tap.release()
+        // ARC lo gestiona y el audioMix lo retiene mientras suene el ítem.
         hasTap = true
     }
 
