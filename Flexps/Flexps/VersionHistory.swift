@@ -12,10 +12,61 @@ struct VersionEntry: Identifiable {
 }
 
 enum VersionHistory {
-    static let current = "1.0.1"
+    static let current = "1.0.8"
     static let webVersion = "1.6.2"
 
     static let entries: [VersionEntry] = [
+        VersionEntry(
+            version: "1.0.8",
+            date: "9 nov 2026",
+            notes: [
+                "Visualizador de audio, como en la web: la portada queda estática y el fondo borroso detrás respira con la energía de la música (escala, rotación, saturación y brillo).",
+                "La energía real se lee con un tap de solo lectura sobre el reproductor, sin tocar el crossfade ni la reproducción en segundo plano; sin espectro (YouTube) respira por seno, como en la web."
+            ]
+        ),
+        VersionEntry(
+            version: "1.0.7",
+            date: "8 nov 2026",
+            notes: [
+                "En modo oscuro los iconos ya se ven blancos: el color de acento era negro fijo y la pestaña seleccionada desaparecía sobre el fondo oscuro."
+            ]
+        ),
+        VersionEntry(
+            version: "1.0.6",
+            date: "8 nov 2026",
+            notes: [
+                "El mini reproductor quedó un poco más arriba, con más aire sobre el menú de abajo."
+            ]
+        ),
+        VersionEntry(
+            version: "1.0.5",
+            date: "8 nov 2026",
+            notes: [
+                "El mini reproductor ya no tapa el menú de abajo (la barra flotante de iOS 26)."
+            ]
+        ),
+        VersionEntry(
+            version: "1.0.4",
+            date: "8 nov 2026",
+            notes: [
+                "Ahora se puede importar música con Compartir o Abrir con desde Archivos y otras apps, directo a la biblioteca."
+            ]
+        ),
+        VersionEntry(
+            version: "1.0.3",
+            date: "8 nov 2026",
+            notes: [
+                "Icono de la app con el PNG real de iPlay (oscuro con el logo tal cual, claro en negativo) y el logo también dentro de la app, en Inicio.",
+                "Importar desde el selector ahora es con un solo toque: antes solo se marcaba la canción y había que pulsar Abrir."
+            ]
+        ),
+        VersionEntry(
+            version: "1.0.2",
+            date: "8 nov 2026",
+            notes: [
+                "La app ahora se llama iPlayerPod en todas partes (antes aparecía como Flexps)."
+            ]
+        ),
         VersionEntry(
             version: "1.0.1",
             date: "8 nov 2026",
