@@ -147,6 +147,12 @@ struct FullPlayerView: View {
                 }
                 .padding()
             }
+            // Visualizador de audio (1.0.8): la portada es estática y el
+            // fondo borroso detrás respira con la energía de la música,
+            // como en la web. Sin canción, degradado neutro.
+            .background {
+                BreathingCoverBackground(song: player.currentSong)
+            }
             .navigationTitle("Reproduciendo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
